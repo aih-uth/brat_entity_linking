@@ -3,8 +3,9 @@ import os
 import csv
 import jaconv
 import re
-from umls_mapping.text2umls import is_harf
 import sys
+sys.path.append('./server/src/')
+from umls_mapping.text2umls import is_harf
 
 # データ行の最後に'|' が入っているので、'|'でスプリットした最後は必ず''になる。（''が一つ余計に入る)
 CUI = 0
@@ -22,11 +23,11 @@ if __name__ == '__main__':
     # 引数を処理する
     file_body = os.path.splitext(os.path.basename(__file__))[0]
     parse = argparse.ArgumentParser(description=file_body)
-    parse.add_argument('--data_root', type=str, default='/mnt/e/datasets/UMLS/2022AA/META')
+    parse.add_argument('--data_root', type=str, help='path to directory which contains MRCONSO.RRF, MRDEF.RRF, and MRSTY.RRF (for example, "./UMLS/2019AB/META")', required=True)
     parse.add_argument('--concept_source', type=str, default='MRCONSO.RRF')
     parse.add_argument('--def_source', type=str, default='MRDEF.RRF')
     parse.add_argument('--sty_source', type=str, default='MRSTY.RRF')
-    parse.add_argument('--output_dir', type=str, default='resource_2022AA')
+    parse.add_argument('--output_dir', type=str, default='resource')
     args = parse.parse_args()
 
     # "CUI-表記"辞書の作成

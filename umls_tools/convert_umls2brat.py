@@ -17,7 +17,7 @@ if __name__ == '__main__':
     # 引数を処理する
     file_body = os.path.splitext(os.path.basename(__file__))[0]
     parse = argparse.ArgumentParser(description=file_body)
-    parse.add_argument('--data_root', type=str, help='path to directory which contains MRCONSO.RRF, MRDEF.RRF, and MRSTY.RRF (for example, "./UMLS/2019AB/META")')
+    parse.add_argument('--data_root', type=str, help='path to directory which contains MRCONSO.RRF, MRDEF.RRF, and MRSTY.RRF (for example, "./UMLS/2019AB/META")', required=True)
     parse.add_argument('--concept_source', type=str, default='MRCONSO.RRF')
     parse.add_argument('--def_source', type=str, default='MRDEF.RRF')
     parse.add_argument('--sty_source', type=str, default='MRSTY.RRF')
@@ -79,11 +79,12 @@ if __name__ == '__main__':
 
     print('len(cui_dict)\t{}\tlen(def_dict)\t{}\tlen(sty_dict)\t{}'.format(len(cui_dict), len(def_dict), len(sty_dict)))
     # ファイル出力
-    work_dir = os.path.dirname(os.path.dirname(os.getcwd()))
-    work_dir = os.path.join(work_dir, 'work')
+    out_dir = os.path.join(os.getcwd(), 'ext_tools','umls_tools','resource')
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
     max_len = len(cui_dict)
     cnt = 0
-    with open(os.path.join(work_dir, 'umls_source', 'UMLS.txt'), mode='w', encoding='utf_8', newline='\n') as of:
+    with open(os.path.join(out_dir, 'UMLS.txt'), mode='w', encoding='utf_8', newline='\n') as of:
         for k, v in cui_dict.items():
             line = [k]
             for lang in TARGET_LANG:

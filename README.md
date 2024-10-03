@@ -262,11 +262,11 @@ Download [UMLS Metathesaurus](https://www.nlm.nih.gov/research/umls/licensedcont
 cd /PATH/TO/BRAT
 
 # build database for brat
-python ext_tools/umls_tools/convert_umls2brat.py
-python tools/norm_db_init.py
+python ext_tools/umls_tools/convert_umls2brat.py --data_root UMLS_DIR
+python tools/norm_db_init.py ext_tools/umls_tools/resource/UMLS.txt
 
 # build simstring index
-python ext_tools/umls_tools/convert_umls2simstring.py
+python ext_tools/umls_tools/convert_umls2simstring.py --data_root UMLS_DIR
 python server/src/umls_mapping/text2umls.py --init-db
 ```
 ### Step 4: Brat configration
