@@ -204,56 +204,6 @@ Line 413:
         cursor.close()
 ```
 
-#### PATH_TO_BRAT/static/style-ui.css
-
-Line 142:
-```css
-# before
-.rowselectable {
-  height: 200px;
-  ...
-}
-```
-
-```css
-# after
-.rowselectable {
-  height: 260px;
-  ...
-}
-```
-
-Line 165:
-```css
-# before
-.rowselectable tr.selected {
-  background-color: #cccccc;
-}
-#norm_search_container {
-```
-
-```css
-# after
-.rowselectable tr.selected {
-  background-color: #cccccc;
-}
-#norm_search_result_select td {
-  height: 12px;
-}
-#norm_search_result_select td {
-  overflow-x: auto;
-}
-#norm_search_result_select td:nth-child(2) {
-  max-width: 180px;
-}
-#norm_search_result_select td:nth-child(3) {
-  max-width: 240px;
-}
-#norm_search_result_select td:nth-child(4) {
-  max-width: 160px;
-}
-#norm_search_container {
-```
 
 ### Step 3: Construct databases
 Download [UMLS Metathesaurus](https://www.nlm.nih.gov/research/umls/licensedcontent/umlsknowledgesources.html) and obtain **MRCONSO.RRF**, **MRDEF.RRF**, and **MRSTY.RRF**.

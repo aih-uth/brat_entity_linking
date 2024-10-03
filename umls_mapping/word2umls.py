@@ -19,7 +19,7 @@ class UmlsMapper(object):
     def __new__(cls, *args, **kwargs):
         if cls.__instance is None:
             cls.__instance = super(UmlsMapper, cls).__new__(cls)
-            cls.searcher, cls.m_dict, cls.cui2hp_dict = tu.load_dct()
+            cls.searcher = tu.load_dct()
             cls.test_value_df = tu.test_value_set()
         return cls.__instance
 
